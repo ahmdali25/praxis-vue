@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -38,12 +39,22 @@ const routes = [
   {
     path: '/admin',
     name: 'Admin',
-    component: () => import(/* webpackChunkName: "admin" */ '../views/Admin/Admin.vue')
-  }
+    meta: {login : true},
+    component: () => import(/* webpackChunkName: "admin" */ '../views/Admin/Admin.vue'),
+    beforeEnter: (to, from, next) => {
+     if(store.state.admin.authenticated == false) {
+       next('/login')
+      //  alert('This page is secured!')
+     } else {
+       next()
+     }
+    }
+  },
 ]
 
 const router = new VueRouter({
-  routes
+  routes,
+  store : store
 })
 
 export default router

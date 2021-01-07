@@ -61,6 +61,7 @@ export default {
                 } else if(this.admin.password !== adminPassword) {
                     this.error.password = true
                 } else {
+                    this.$store.commit("setAuthentication", true)
                     this.$store.dispatch("login", this.admin)
                     alert('Login success!')
                     this.$router.push('/admin')

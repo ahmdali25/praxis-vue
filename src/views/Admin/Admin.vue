@@ -7,9 +7,9 @@
             <v-divider></v-divider>
             <v-card-subtitle>
                 <h3>Data Pendaftaran</h3>
+                <h4>Data Pendaftran Frontend</h4>
                 <v-list v-for="user in filterUsers" :key="user.name">
                 <v-list-item-content>
-                    <v-list-item-title>Data Pendaftaran Frontend</v-list-item-title>
                     <v-divider></v-divider>
                     <v-list-item-subtitle>Name : {{user.name}}</v-list-item-subtitle>
                     <v-list-item-subtitle>Address : {{user.address}}</v-list-item-subtitle>
