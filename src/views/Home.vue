@@ -20,6 +20,15 @@
                 {{item.title}}
             </v-list-item-title>
           </v-list-item>
+          <v-list-item>
+             Slot Pendaftaran Frontend : {{totalFrontendUser}} / 5
+          </v-list-item>
+          <v-list-item>
+             Slot Pendaftaran Backend : {{totalBackendUser}} / 5
+          </v-list-item>
+           <v-list-item>
+             Slot Pendaftaran Mobile : {{totalMobileUser}} / 5
+          </v-list-item>
         </v-list-item-group>
       </v-list>
     </v-container>
@@ -40,6 +49,32 @@ export default {
         {title: 'Back-end Developer', route: '/backend'},
         {title: 'Mobile Developer', route: '/mobile'},
       ]
-  })
+  }),
+  computed: {
+    totalFrontendUser() {
+      let counter = 0
+      for (const obj of this.$store.state.users) {
+        if (obj.program === 'Frontend')
+        counter++;
+      }
+      return counter
+    },
+    totalBackendUser() {
+      let counter = 0
+      for (const obj of this.$store.state.users) {
+        if (obj.program === 'Backend')
+        counter++;
+      }
+      return counter
+    },
+    totalMobileUser() {
+      let counter = 0
+      for (const obj of this.$store.state.users) {
+        if (obj.program === 'Mobile')
+        counter++;
+      }
+      return counter
+    }
+  }
 }
 </script>

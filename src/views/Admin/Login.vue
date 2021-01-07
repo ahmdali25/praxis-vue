@@ -7,14 +7,26 @@
                         <v-card-title class="justify-center"> 
                             <h3>Login Admin</h3>
                         </v-card-title>
-                        <v-form ref="form">
-                            <v-alert color="error" type="error" :value="error.username">
+                        <v-form>
+                            <v-alert 
+                                color="error" 
+                                type="error" 
+                                :value="error.username"
+                                transition="slide-y-transition">
                                 Username incorrect!
                             </v-alert>
-                             <v-alert color="error" type="error" :value="error.password">
+                             <v-alert 
+                                color="error" 
+                                type="error" 
+                                :value="error.password"
+                                transition="slide-y-transition">
                                 Password incorrect!
                             </v-alert>
-                             <v-alert color="error" type="error" :value="error.userpass">
+                             <v-alert 
+                                color="error" 
+                                type="error" 
+                                :value="error.userpass"
+                                transition="slide-y-transition">
                                 Username and password incorrect!
                             </v-alert>
                             <v-card-text>

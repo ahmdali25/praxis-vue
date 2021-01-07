@@ -10,25 +10,25 @@ export default new Vuex.Store({
         name: 'Ali',
         address: 'Purworejo',
         program: 'Frontend',
-        isApproved: true
+        isApproved: false
       },
       {
         name: 'Albab',
         address: 'Sleman',
         program: 'Frontend',
-        isApproved: true
+        isApproved: false
       },
       {
         name: 'Andi',
         address: 'Temanggung',
         program: 'Frontend',
-        isApproved: true
+        isApproved: false
       },
       {
-        name: 'Ikhsan',
-        address: 'Kebumen',
-        program: 'Frontend',
-        isApproved: true
+        name: 'Evan',
+        address: 'Surabaya',
+        program: 'Backend',
+        isApproved: false
       }
     ],
     admin: {
@@ -36,6 +36,11 @@ export default new Vuex.Store({
       password : '1234',
       authenticated : false
     },
+  },
+  getters: {
+    allUsers(state) {
+      return state.users.length
+    }
   },
   mutations: {
     addUsers(state, payload) {

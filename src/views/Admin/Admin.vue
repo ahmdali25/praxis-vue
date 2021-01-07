@@ -2,12 +2,11 @@
     <v-container>
         <v-card>
             <v-card-title>
-                <h2>Ini halaman Admin</h2>
+                <h2>Data Pendaftaran</h2>
             </v-card-title>
             <v-divider></v-divider>
             <v-card-subtitle>
-                <h3>Data Pendaftaran</h3>
-                <h4>Data Pendaftran Frontend</h4>
+                <h3>Data Pendaftaran Frontend</h3>
                 <v-list v-for="user in filterUsers" :key="user.name">
                 <v-list-item-content>
                     <v-divider></v-divider>

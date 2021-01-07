@@ -18,7 +18,7 @@
 export default {
   computed: {
      filterUsers() {
-       return this.$store.state.users.filter((user) => {
+       return this.$store.state.users.filter(user => {
          if (user.isApproved === false) {
             user.status = 'Pending'
          } else{

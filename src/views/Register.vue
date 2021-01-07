@@ -8,6 +8,13 @@
                             <h3>Form Register</h3>
                         </v-card-title>
                         <v-form ref="form">
+                            <v-alert 
+                                color="error" 
+                                type="error" 
+                                :value="alert"
+                                transition="slide-y-transition">
+                                Pendaftaran penuh, tunggu batch selanjutnya!
+                            </v-alert>
                             <v-card-text>
                                 <v-text-field label="Name" prepend-icon="mdi-account-circle" v-model="user.name" :rules="nameRules"/>
                                 <v-text-field label="Address" prepend-icon="mdi-home" v-model="user.address" :rules="addressRules"/>
@@ -49,21 +56,26 @@ export default {
         ],
         programRules : [
             value => value != '' || 'Program is required'
-        ]
+        ],
+        alert: false
     }),
 
     methods: {
         handleSubmit() {
             if(this.$refs.form.validate()){
-                this.$store.dispatch('actionUsers', this.user)
-                if (this.user.program === 'Frontend') {
-                    this.$router.push({name: 'Frontend'})
-                } else if(this.user.program === 'Backend') {
-                    this.$router.push({name: 'Backend'})
-                } else {
-                    this.$router.push({name: 'Mobile'})
+                if (this.$store.state.users.length >= 5){
+                    this.alert = true
+                }else {
+                    this.$store.dispatch('actionUsers', this.user)
+                    if (this.user.program === 'Frontend') {
+                        this.$router.push({name: 'Frontend'})
+                    } else if(this.user.program === 'Backend') {
+                        this.$router.push({name: 'Backend'})
+                    } else {
+                        this.$router.push({name: 'Mobile'})
+                    }
+                    alert('Pendaftaran berhasil!')
                 }
-                alert('Pendaftaran berhasil!')
             }
         }
     }
