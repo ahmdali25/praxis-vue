@@ -44,7 +44,6 @@ const routes = [
     beforeEnter: (to, from, next) => {
      if(store.state.admin.authenticated == false) {
        next('/login')
-      //  alert('This page is secured!')
      } else {
        next()
      }

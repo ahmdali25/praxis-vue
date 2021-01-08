@@ -6,7 +6,11 @@
           <h1 class="text-center">Praxis Academy</h1>
 
           <v-banner>
-             Praxis Academy adalah sekolah pemrograman yang khusus menangani aplikasi level enterprise. Kami menggunakan platform Java untuk sisi back end dan JavaScript untuk sisi front end. Sekolah ini didirikan tahun 2019 setelah melihat adanya kesenjangan yang signifikan antara dunia industri dengan dunia pendidikan. Tujuan utama dari pendirian sekolah ini adalah menjembatani dunia industri software dengan calon-calon SDM yang akan berkiprah di industri software tersebut. Sekolah ini didirikan sebagai hasil kerjasama antara pelaku di industri software serta praktisi bidang pendidikan yang secara khusus memang mendedikasikan diri di bidang teknologi software.
+             Praxis Academy adalah sekolah pemrograman yang khusus menangani aplikasi level enterprise.
+             Kami menggunakan platform Java untuk sisi back end dan JavaScript untuk sisi front end.
+             Sekolah ini didirikan tahun 2019 setelah melihat adanya kesenjangan yang signifikan antara dunia industri dengan dunia pendidikan.
+             Tujuan utama dari pendirian sekolah ini adalah menjembatani dunia industri software dengan calon-calon SDM yang akan berkiprah di industri software tersebut.
+             Sekolah ini didirikan sebagai hasil kerjasama antara pelaku di industri software serta praktisi bidang pendidikan yang secara khusus memang mendedikasikan diri di bidang teknologi software.
           </v-banner>
 
           <v-list-item>
@@ -52,28 +56,13 @@ export default {
   }),
   computed: {
     totalFrontendUser() {
-      let counter = 0
-      for (const obj of this.$store.state.users) {
-        if (obj.program === 'Frontend')
-        counter++;
-      }
-      return counter
+      return this.$store.getters.userProgramFrontend
     },
     totalBackendUser() {
-      let counter = 0
-      for (const obj of this.$store.state.users) {
-        if (obj.program === 'Backend')
-        counter++;
-      }
-      return counter
+      return this.$store.getters.userProgramBackend
     },
     totalMobileUser() {
-      let counter = 0
-      for (const obj of this.$store.state.users) {
-        if (obj.program === 'Mobile')
-        counter++;
-      }
-      return counter
+      return this.$store.getters.userProgramMobile
     }
   }
 }

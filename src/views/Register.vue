@@ -16,8 +16,16 @@
                                 Pendaftaran penuh, tunggu batch selanjutnya!
                             </v-alert>
                             <v-card-text>
-                                <v-text-field label="Name" prepend-icon="mdi-account-circle" v-model="user.name" :rules="nameRules"/>
-                                <v-text-field label="Address" prepend-icon="mdi-home" v-model="user.address" :rules="addressRules"/>
+                                <v-text-field
+                                label="Name"
+                                prepend-icon="mdi-account-circle"
+                                v-model="user.name"
+                                :rules="nameRules"/>
+                                <v-text-field
+                                label="Address"
+                                prepend-icon="mdi-home"
+                                v-model="user.address"
+                                :rules="addressRules"/>
                                 <v-select
                                 :items="programs"
                                 prepend-icon="mdi-laptop"
@@ -62,19 +70,29 @@ export default {
 
     methods: {
         handleSubmit() {
-            if(this.$refs.form.validate()){
-                if (this.$store.state.users.length >= 5){
-                    this.alert = true
-                }else {
-                    this.$store.dispatch('actionUsers', this.user)
-                    if (this.user.program === 'Frontend') {
-                        this.$router.push({name: 'Frontend'})
-                    } else if(this.user.program === 'Backend') {
-                        this.$router.push({name: 'Backend'})
+            if (this.$refs.form.validate()){
+                this.$store.dispatch('addUser', this.user)
+                if (this.user.program === 'Frontend') {
+                    if(this.$store.getters.userProgramFrontend >= 5) {
+                        this.alert = true
                     } else {
+                        alert('Pendaftaran berhasil!')
+                        this.$router.push({name: 'Frontend'})
+                    }
+                } else if(this.user.program === 'Backend') {
+                     if(this.$store.getters.userProgramBackend >= 5) {
+                        this.alert = true
+                    } else {
+                        alert('Pendaftaran berhasil!')
+                        this.$router.push({name: 'Backend'})
+                    }
+                } else {
+                     if(this.$store.getters.userProgramMobile >= 5) {
+                        this.alert = true
+                    } else {
+                        alert('Pendaftaran berhasil!')
                         this.$router.push({name: 'Mobile'})
                     }
-                    alert('Pendaftaran berhasil!')
                 }
             }
         }
