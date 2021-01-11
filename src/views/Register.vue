@@ -73,21 +73,21 @@ export default {
             if (this.$refs.form.validate()){
                 this.$store.dispatch('addUser', this.user)
                 if (this.user.program === 'Frontend') {
-                    if(this.$store.getters.userProgramFrontend >= 5) {
+                    if(this.$store.getters.userProgramFrontend > 5) {
                         this.alert = true
                     } else {
                         alert('Pendaftaran berhasil!')
                         this.$router.push({name: 'Frontend'})
                     }
                 } else if(this.user.program === 'Backend') {
-                     if(this.$store.getters.userProgramBackend >= 5) {
+                     if(this.$store.getters.userProgramBackend > 5) {
                         this.alert = true
                     } else {
                         alert('Pendaftaran berhasil!')
                         this.$router.push({name: 'Backend'})
                     }
                 } else {
-                     if(this.$store.getters.userProgramMobile >= 5) {
+                     if(this.$store.getters.userProgramMobile > 5) {
                         this.alert = true
                     } else {
                         alert('Pendaftaran berhasil!')

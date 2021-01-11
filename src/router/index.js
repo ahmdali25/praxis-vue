@@ -39,10 +39,10 @@ const routes = [
   {
     path: '/admin',
     name: 'Admin',
-    meta: {login : true},
     component: () => import(/* webpackChunkName: "admin" */ '../views/Admin/Admin.vue'),
     beforeEnter: (to, from, next) => {
-     if(store.state.admin.authenticated == false) {
+     let auth = localStorage.getItem('authentication')
+     if(auth == false) {
        next('/login')
      } else {
        next()
@@ -52,6 +52,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes,
   store : store
 })

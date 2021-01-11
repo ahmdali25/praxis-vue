@@ -66,6 +66,7 @@ export default {
         handleSubmit() {
                 const adminUsername = this.$store.state.admin.username
                 const adminPassword = this.$store.state.admin.password
+                const auth = true
                 if(this.admin.username !== adminUsername && this.admin.password !== adminPassword) {
                     this.error.userpass = true
                 } else if(this.admin.username !== adminUsername) {
@@ -73,7 +74,8 @@ export default {
                 } else if(this.admin.password !== adminPassword) {
                     this.error.password = true
                 } else {
-                    this.$store.commit("setAuthentication", true)
+                    localStorage.setItem("authentication", auth)
+                    this.$store.commit("setAuthentication", auth)
                     this.$store.dispatch("login", this.admin)
                     alert('Login success!')
                     this.$router.push('/admin')
