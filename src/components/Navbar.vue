@@ -44,17 +44,15 @@
 
 <script>
   export default {
-    data: () => {
-      return {
+    data: () => ({
         drawer: false,
         register: '/register',
         items: [
           {title: 'Front-end Developer', icon: 'mdi-laptop', route: '/frontend'},
-          { title: 'Back-end Developer', icon: 'mdi-laptop', route: '/backend' },
+          {title: 'Back-end Developer', icon: 'mdi-laptop', route: '/backend' },
           {title: 'Mobile App Developer', icon: 'mdi-laptop', route: '/mobile'}
           ]
-      }
-    }
+    })
   }
 </script>
 

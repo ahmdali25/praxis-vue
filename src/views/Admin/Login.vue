@@ -1,5 +1,6 @@
 <template>
       <v-app>
+        <AdminNavbar/>
         <v-container>
             <v-row class="justify-center">
                 <v-col class="col-sm-4 col-md-4 col-lg-4">
@@ -46,7 +47,12 @@
 </template>
 
 <script>
+import AdminNavbar from '../../components/AdminNavbar.vue'
+
 export default {
+    components: {
+        AdminNavbar
+    },
     data: () => ({
         admin: {
             username : '',

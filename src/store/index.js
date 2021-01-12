@@ -38,7 +38,7 @@ export default new Vuex.Store({
       }
     ],
     admin: {
-      username : 'Ali',
+      username : 'ali',
       password : '1234',
       auth : false
     },

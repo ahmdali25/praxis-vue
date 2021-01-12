@@ -1,6 +1,6 @@
 <template>
   <v-app>
-  <Navbar/>
+  <Navbar v-if="['Home','Frontend','Backend','Mobile','Register'].includes($route.name)"/>
     <v-main>
       <router-view/>
     </v-main>

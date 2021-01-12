@@ -1,4 +1,6 @@
 <template>
+    <div>
+    <AdminNavbar/>
     <v-container>
         <v-card>
             <v-card-title>
@@ -52,10 +54,15 @@
             </v-card-subtitle>
         </v-card>
     </v-container>
+    </div>
 </template>
 
 <script>
+import AdminNavbar from '../../components/AdminNavbar.vue'
 export default {
+    components: {
+        AdminNavbar
+    },
     computed: {
      filterFrontend() {
        return this.$store.state.users.filter((user) => {

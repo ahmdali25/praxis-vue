@@ -42,6 +42,16 @@ const routes = [
     meta: {requiresAuth: true},
     beforeEnter: guardAdmin
   },
+  {
+    path: '/logout',
+    name: 'Logout Admin',
+    beforeEnter: (to, from, next) => {
+      localStorage.removeItem('auth')
+      if(localStorage.getItem('auth') == undefined) {
+        next('/login')
+      }
+    }
+  }
 ]
 
 function guardAdmin(to, from, next) {
