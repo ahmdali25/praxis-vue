@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import store from '../store'
 
 Vue.use(VueRouter)
 
@@ -40,21 +39,24 @@ const routes = [
     path: '/admin',
     name: 'Admin',
     component: () => import(/* webpackChunkName: "admin" */ '../views/Admin/Admin.vue'),
-    beforeEnter: (to, from, next) => {
-     let auth = localStorage.getItem('authentication')
-     if(auth == false) {
-       next('/login')
-     } else {
-       next()
-     }
-    }
+    meta: {requiresAuth: true},
+    beforeEnter: guardAdmin
   },
 ]
 
+function guardAdmin(to, from, next) {
+ if (to.matched.some(record => record.meta.requiresAuth)) {
+   if (localStorage.getItem('auth') == undefined) {
+     next({path: '/login'})
+   } else {
+     next()
+   }
+ }
+}
+
 const router = new VueRouter({
   mode: 'history',
-  routes,
-  store : store
+  routes
 })
 
 export default router
