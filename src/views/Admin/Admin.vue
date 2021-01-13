@@ -65,40 +65,13 @@ export default {
     },
     computed: {
      filterFrontend() {
-       return this.$store.state.users.filter((user) => {
-         if(user.program === 'Frontend') {
-            if (user.isApproved === false) {
-            user.status = 'Pending'
-            } else{
-            user.status = 'Approved'
-         }
-            return user.program === 'Frontend'
-         } 
-       })
+       return this.$store.getters.filterFrontendUsers
      },
      filterBackend() {
-       return this.$store.state.users.filter((user) => {
-         if(user.program === 'Backend') {
-            if (user.isApproved === false) {
-            user.status = 'Pending'
-            } else{
-            user.status = 'Approved'
-         }
-            return user.program === 'Backend'
-         }
-       })
+      return this.$store.getters.filterBackendUsers
      },
      filterMobile() {
-       return this.$store.state.users.filter((user) => {
-         if(user.program === 'Mobile') {
-            if (user.isApproved === false) {
-            user.status = 'Pending'
-            } else{
-            user.status = 'Approved'
-         }
-            return user.program === 'Mobile'
-         }
-       })
+      return this.$store.getters.filterMobileUsers
      }
    },
    methods: {

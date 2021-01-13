@@ -67,6 +67,36 @@ export default new Vuex.Store({
         counter++;
       }
       return counter
+    },
+    filterFrontendUsers: state => {
+      return state.users.filter(user => {
+        if (user.isApproved === false) {
+           user.status = 'Pending'
+        } else{
+          user.status = 'Approved'
+        }
+        return user.program === 'Frontend'
+      })
+    },
+    filterBackendUsers: state => {
+      return state.users.filter((user) => {
+       if (user.isApproved === false) {
+           user.status = 'Pending'
+        } else{
+          user.status = 'Approved'
+        }
+        return user.program === 'Backend'
+      })
+    },
+    filterMobileUsers: state => {
+      return state.users.filter((user) => {
+       if (user.isApproved === false) {
+           user.status = 'Pending'
+        } else{
+          user.status = 'Approved'
+        }
+        return user.program === 'Mobile'
+      })
     }
   },
   mutations: {
