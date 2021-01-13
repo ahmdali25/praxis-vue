@@ -9,7 +9,7 @@
             <v-divider></v-divider>
             <v-card-subtitle>
                 <h3>Data Pendaftaran Frontend</h3>
-                <v-list v-for="user in filterFrontend" :key="user.name">
+                <v-list v-for="user in filterFrontendUsers" :key="user.name">
                     <v-list-item-content>
                         <v-divider></v-divider>
                         <v-list-item-subtitle>Name : {{user.name}}</v-list-item-subtitle>
@@ -24,7 +24,7 @@
             </v-card-subtitle>
              <v-card-subtitle>
                 <h3>Data Pendaftaran Backend</h3>
-                <v-list v-for="user in filterBackend" :key="user.name">
+                <v-list v-for="user in filterBackendUsers" :key="user.name">
                     <v-list-item-content>
                         <v-divider></v-divider>
                         <v-list-item-subtitle>Name : {{user.name}}</v-list-item-subtitle>
@@ -39,7 +39,7 @@
             </v-card-subtitle>
              <v-card-subtitle>
                  <h3>Data Pendaftaran Mobile</h3>
-                <v-list v-for="user in filterMobile" :key="user.name">
+                <v-list v-for="user in filterMobileUsers" :key="user.name">
                     <v-list-item-content>
                         <v-divider></v-divider>
                         <v-list-item-subtitle>Name : {{user.name}}</v-list-item-subtitle>
@@ -59,28 +59,22 @@
 
 <script>
 import AdminNavbar from '../../components/AdminNavbar.vue'
+import { mapGetters } from 'vuex'
+
 export default {
     components: {
         AdminNavbar
     },
     computed: {
-     filterFrontend() {
-       return this.$store.getters.filterFrontendUsers
-     },
-     filterBackend() {
-      return this.$store.getters.filterBackendUsers
-     },
-     filterMobile() {
-      return this.$store.getters.filterMobileUsers
-     }
-   },
-   methods: {
+        ...mapGetters(['filterFrontendUsers','filterBackendUsers','filterMobileUsers'])
+    },
+    methods: {
        handleApprove(user) {
            user.isApproved = !user.isApproved
        },
        btnDeleteUser(user){
            this.$store.dispatch('deleteUser', user)
        }
-   }
+    }
 }
 </script>

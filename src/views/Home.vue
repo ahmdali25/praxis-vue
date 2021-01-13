@@ -25,13 +25,13 @@
             </v-list-item-title>
           </v-list-item>
           <v-list-item>
-             Slot Pendaftaran Frontend : {{totalFrontendUser}} / 5
+             Slot Pendaftaran Frontend : {{userProgramFrontend}} / 5
           </v-list-item>
           <v-list-item>
-             Slot Pendaftaran Backend : {{totalBackendUser}} / 5
+             Slot Pendaftaran Backend : {{userProgramBackend}} / 5
           </v-list-item>
            <v-list-item>
-             Slot Pendaftaran Mobile : {{totalMobileUser}} / 5
+             Slot Pendaftaran Mobile : {{userProgramMobile}} / 5
           </v-list-item>
         </v-list-item-group>
       </v-list>
@@ -41,6 +41,7 @@
 
 <script>
 // @ is an alias to /src
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Home',
@@ -55,15 +56,7 @@ export default {
       ]
   }),
   computed: {
-    totalFrontendUser() {
-      return this.$store.getters.userProgramFrontend
-    },
-    totalBackendUser() {
-      return this.$store.getters.userProgramBackend
-    },
-    totalMobileUser() {
-      return this.$store.getters.userProgramMobile
-    }
+    ...mapGetters(['userProgramFrontend','userProgramBackend','userProgramMobile'])
   }
 }
 </script>

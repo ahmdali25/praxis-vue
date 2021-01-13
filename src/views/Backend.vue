@@ -15,11 +15,10 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-   computed: {
-     filterBackendUsers() {
-      return this.$store.getters.filterBackendUsers
-   }
+  computed: {
+    ...mapGetters(['filterBackendUsers'])  
   }
 }
 </script>
